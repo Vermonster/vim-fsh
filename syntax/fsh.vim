@@ -27,11 +27,11 @@ syntax region  FshComment        start='^//\s' end=/$/ contains=FshCommentTodo,S
 
 " Setup the highlighting links
 hi link FshKeyword    Keyword
-hi link FshCode		    Identifier
-hi link FhsToken	    Type
-hi link FshComment	  Comment
-hi link FshTodo	      Todo
-hi link FshBool	      Boolean
-hi link FshString	    String
-hi link FshReserved	  Error
+hi link FshCode       Identifier
+hi link FhsToken      Type
+hi link FshComment    Comment
+hi link FshTodo       Todo
+hi link FshBool       Boolean
+hi link FshString     String
+hi link FshReserved   Error
 hi link FshUrl        Underlined
