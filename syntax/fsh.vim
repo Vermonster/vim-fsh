@@ -1,7 +1,7 @@
 " Vim syntaxtax file
 " Language: FHIR Shorthand (FSH) language
 " Maintainer: Brian Kaney
-" Latest Revision: 0.0.2
+" Latest Revision: 0.0.3
 
 if exists("b:current_syn")
   finish
@@ -26,9 +26,11 @@ syntax match FshOperator /->/
 syntax match FshCode  /#[^ ]*/
 syntax match FshUrl   /https\?:\/\/\(\w\+\(:\w\+\)\?@\)\?\([A-Za-z][-_0-9A-Za-z]*\.\)\{1,}\(\w\{2,}\.\?\)\{1,}\(:[0-9]\{1,5}\)\?\S*/
 
-syntax region  FshComment   start=+/\*+ end=+\*/+ contains=FshTodo,@Spell fold extend keepend
 syntax region  FshComment   start='^//\s' end=/$/ contains=FshTodo,@Spell fold extend keepend
-syntax region  FshString	  start='"' end='"' skip='\\"' contains=FshEscape
+syntax region  FshComment   start='^//\n' end=/$/ contains=FshTodo,@Spell fold extend keepend
+syntax region  FshComment   start=+/\*+ end=+\*+ contains=FshTodo,@Spell fold extend keepend
+syntax region  FshString    start=/"""$/ end=/"""$/ contains=FshTodo,@Spell
+syntax region  FshString    start=/[^"]"[^"]/ end=/"/ skip='\\"' contains=FshTodo,@Spell
 
 " Setup the highlighting links
 hi link FshKeyword    Keyword
@@ -39,6 +41,6 @@ hi link FshComment    Comment
 hi link FshTodo       Todo
 hi link FshBool       Boolean
 hi link FshString     String
-hi link FshReserved   Error
+hi link FshReserved   Special
 hi link FshUrl        Underlined
 hi link FshEscape     Special
